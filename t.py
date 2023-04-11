@@ -1,7 +1,0 @@
-IPiran= input("Enter the ip server of your tunnel(iran):")
-Ipkharej= input("Enter your main server IP(Your sarver):")
-os.system('sysctl net.ipv4.ip_forward=1')
-os.system('iptables -t nat -A PREROUTING -p tcp --dport 22 -j DNAT --to-destination %s' % IPiran)
-os.system('iptables -t nat -A PREROUTING -j DNAT --to-destination %s' % Ipkharej)
-os.system('iptables -t nat -A POSTROUTING -j MASQUERADE')
-os.system('sysctl net.ipv4.ip_forward=1')
