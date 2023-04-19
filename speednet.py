@@ -20,8 +20,3 @@ with open('nano /etc/profile', 'a') as file:
 print(Fore.GREEN, "Done ", Fore.RESET)
 time.sleep(1)
 print(Fore.WHITE, "ok. Return to the main menu")
-time.sleep(2)
-
-path = os.path.dirname(__file__)   
-path = os.path.join(path, "Run.py")
-exec(open(path).read())
