@@ -1,19 +1,16 @@
-python
 import os
+import uuid
+import random
 
+domain = 'meta.consolcbr.xyz'
 
-port = input('Enter the port number: ')
+uuid_val = str(uuid.uuid4())
 
+port = random.randint(1025, 65535)
 
-command = f"netstat -tna | grep ':{port}' | grep 'ESTABLISHED' | awk '{{print $4}}' | awk -F':' '{{print $NF}}'"
-output = os.popen(command).read()
+config_path = os.path.join(os.getcwd(), f'{domain}.json')
 
-ssh_count = {}
-for p in output.split():
-    if p in ssh_count:
-        ssh_count[p] += 1
-    else:
-        ssh_count[p] = 1
+tl_command = f'tl client --url ws://{domain}:{port} --type vless --security tls --uuid {uuid_val} --mux 0 > {config_path}'
+os.system(tl_command)
 
-for p, count in ssh_count.items():
-    print(f'Port {p}: {count} connections')
+print(f'VLESS config created for domain {domain} with UUID {uuid_val} and port {port}: {config_path}')
