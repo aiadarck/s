@@ -1,9 +1,8 @@
-python
 import os
 import uuid
 import random
 
-tl_path = os.popen('which tl').read().strip()
+tl_path = '/usr/local/bin/tl'
 
 domain = 'meta.consolcbr.xyz'
 
@@ -18,7 +17,7 @@ os.system(tl_command)
 
 print(f'VLESS config created for domain {domain} with UUID {uuid_val} and port {port}: {config_path}')
 
-qemu_path = os.popen('which qemu-img').read().strip()
+qemu_path = '/usr/bin/qemu-img'
 
 disk_size_mb = 20000
 
